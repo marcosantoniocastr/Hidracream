@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Web Futurista</title>
+    <!-- Importación de fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Importación de AOS (Animate On Scroll) para efectos de scroll -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            color: #fff;
+            overflow-x: hidden;
+        }
+         
+        header {
+    display: flex;
+    justify-content: flex-end; /* Mueve el contenido al lado derecho */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0d0d0d;
+    position: relative;
+    z-index: 1;
+}
+
+   /* Estilo para el logo en el encabezado */
+
+
+header .fullscreen-logo img {
+    width: 70px; /* La imagen ocupa todo el contenedor */
+    height: 120px; /* La imagen ocupa todo el contenedor */
+     /* Mantiene la proporción de la imagen */
+}
+      .fullscreen-logo {
+            display: none; /* Inicialmente oculto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .fullscreen-logo img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .fullscreen-logo .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 36px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+       
+
+      
+     .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            z-index: 1000;
+            transform: translateX(-250px);
+        }
+
+        .sidenav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #00ffcc;
+            background-color: #333;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            color: #00ffcc;
+            background-color: #0d0d0d;
+            border: none;
+            padding: 10px 20px;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+        }
+
+        .openbtn:hover {
+            background-color: #333;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://via.placeholder.com/1920x1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+            filter: blur(8px);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 64px;
+            color: #00ffcc;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ffcc;
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc, 0 0 50px #00ffcc; }
+            to { text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 60px #00ffcc, 0 0 80px #00ffcc; }
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+        }
+
+        .hero .cta {
+            margin-top: 30px;
+            padding: 10px 30px;
+            background-color: #00ffcc;
+            color: #0d0d0d;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero .cta:hover {
+            background-color: #00e6b8;
+            transform: scale(1.05);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px 20px;
+            background-color: #121212;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-item {
+            margin: 15px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #00ffcc;
+            text-align: center;
+            font-size: 18px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .gallery-item:hover .caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        footer {
+            background-color: #0d0d0d;
+            padding: 20px 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer a {
+            color: #00ffcc;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: text-shadow 0.3s ease;
+        }
+
+        footer a:hover {
+            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+        }
+
+        footer p {
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 20px;
+            }
+
+            header .logo img {
+                height: 40px;
+            }
+
+            header nav a {
+                font-size: 16px;
+                margin-left: 15px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .gallery-item img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+         <div class="logo" onclick="openFullscreen()">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+  </header>
+      <div id="fullscreenLogo" class="fullscreen-logo">
+        <span class="closebtn" onclick="closeFullscreen()">&times;</span>
+        <img src="logo.jpg" alt="Logo">
+    </div>
+
+    <!-- Barra Lateral -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+
+    <!-- Botón para abrir la barra lateral -->
+    <button class="openbtn" onclick="openNav()">☰ Menú</button>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div data-aos="fade-up">
+            <h1>!Bienvenido!🍃.</h1>
+            <p>Prueba una crema facial, prueba lo Natural.</p>
+            <button class="cta">Descubre Más</button>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeria">
+        <div class="gallery-item" data-aos="zoom-in">
+            <img src="f1.jpeg" alt="Galería 1">
+            <div class="caption">Hidratación intensiva.</div>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in">
+            <img src="f2.jpeg" alt="Galería 2">
+            <div class="caption">Nutrición suave.</div>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in">
+            <img src="f3.jpeg" alt="Galería 3">
+            <div class="caption">Hidratación nutritiva.</div>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in">
+            <img src="f4.jpeg" alt="Galería 4">
+            <div class="caption">Hidratación nutritiva.</div>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in">
+            <img src="f5.jpg" alt="Galería 5">
+            <div class="caption">Innovación 5</div>
+        </div>
+        <div class="gallery-item" data-aos="zoom-in">
+            <img src="f6.jpg" alt="Galería 6">
+            <div class="caption">Innovación 6</div>
+        </div>
+    </section>
+
+    <!-- Particles.js background for dynamic particles effect -->
+    <div id="particles-js" class="particles"></div>
+
+    <!-- Footer Section -->
+    <footer id="contacto">
+        <p>Síguenos en redes sociales:</p>
+        <a href="">Facebook</a> | <a href="">YouTube</a> | <a href="">Instagram</a>
+        <p>&copy; 2024 Equipo hidracream. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+        // Función para abrir el logo a pantalla completa
+        function openFullscreen() {
+            document.getElementById("fullscreenLogo").style.display = "flex";
+        }
+
+        // Función para cerrar el logo a pantalla completa
+        function closeFullscreen() {
+            document.getElementById("fullscreenLogo").style.display = "none";
+        }
+    </script>
+     <script>
+        // Función para abrir la barra lateral
+        function openNav() {
+            document.getElementById("mySidenav").style.transform = "translateX(0)";
+        }
+
+        // Función para cerrar la barra lateral
+        function closeNav() {
+            document.getElementById("mySidenav").style.transform = "translateX(-250px)";
+        }
+
+        // Cambia el fondo del encabezado cuando se hace scroll
+        window.onscroll = function() {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+
+        // Inicialización de AOS (Animate On Scroll)
+        AOS.init({
+            duration: 1200,
+        });
+    </script>
+
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00ffcc"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00ffcc",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+</body>
+</html>
+
